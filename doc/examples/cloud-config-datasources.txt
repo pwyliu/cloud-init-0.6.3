@@ -1,0 +1,33 @@
+# Documentation on data sources configuration options
+datasource:
+  # Ec2 
+  Ec2:
+    # timeout: the timeout value for a request at metadata service
+    timeout : 50
+    # The length in seconds to wait before giving up on the metadata
+    # service.  The actual total wait could be up to 
+    #   len(resolvable_metadata_urls)*timeout
+    max_wait : 120
+
+    #metadata_url: a list of URLs to check for metadata services
+    metadata_urls:
+     - http://169.254.169.254:80
+     - http://instance-data:8773
+
+  MAAS:
+    timeout : 50
+    max_wait : 120
+
+    # there are no default values for metadata_url or oauth credentials
+    # If no credentials are present, non-authed attempts will be made.
+    metadata_url: http://mass-host.localdomain/source
+    consumer_key: Xh234sdkljf
+    token_key: kjfhgb3n
+    token_secret: 24uysdfx1w4
+
+  NoCloud:
+    # default seedfrom is None
+    # if found, then it should contain a url with:
+    #    <url>/user-data and <url>/meta-data
+    # seedfrom: http://my.example.com/i-abcde
+    seedfrom: None
